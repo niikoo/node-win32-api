@@ -1,6 +1,9 @@
 {
   "name": "win32-api",
   "author": "waiting",
+  "contributors": [
+    {"name": "Nikolai Ommundsen", "email": "post@niikoo.net", "url": "https://github.com/niikoo"}
+  ],
   "version": "3.5.1",
   "description": "FFI definitions of windows win32 api for node-ffi",
   "keywords": [

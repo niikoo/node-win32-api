@@ -1,6 +1,5 @@
 import { DModel as M, DTypes as W, FModel } from 'win32-def'
 
-
 export interface Win32Fns {
   /**
    * https://msdn.microsoft.com/en-us/library/windows/desktop/ms679351(v=vs.85).aspx
@@ -35,6 +34,24 @@ export interface Win32Fns {
 
   /** https://msdn.microsoft.com/en-us/library/windows/desktop/ms681381(v=vs.85).aspx */
   SetLastError(dwErrCode: M.DWORD): M.VOID
+
+  /**
+   * Enables an application to inform the system that it is in use,
+   * thereby preventing the system from entering sleep or turning off
+   * the display while the application is running.
+   * 
+   * @example
+   * // Television recording is beginning. Enable away mode and prevent the sleep idle time-out.
+   * SetThreadExecutionState(ES_CONTINUOUS | ES_SYSTEM_REQUIRED | ES_AWAYMODE_REQUIRED);
+   * 
+   * // Clear EXECUTION_STATE flags to disable away mode and allow the system to idle to sleep normally.
+   * SetThreadExecutionState(ES_CONTINUOUS);
+   * 
+   * @param esFlags The thread's execution requirements. This parameter can be one or more of the following values. Join them with single |
+   * @returns If the function succeeds, the return value is the previous thread execution state. If the function fails, the return value is NULL.
+   * @see[Docs]{@link https://docs.microsoft.com/en-us/windows/desktop/api/winbase/nf-winbase-setthreadexecutionstate}
+   */
+  SetThreadExecutionState(esFlags: M.EXECUTION_STATE): number | null;
 }
 
 export const apiDef: FModel.DllFuncs = {
