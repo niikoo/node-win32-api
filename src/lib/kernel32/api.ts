@@ -47,8 +47,10 @@ export interface Win32Fns {
    * // Clear EXECUTION_STATE flags to disable away mode and allow the system to idle to sleep normally.
    * SetThreadExecutionState(ES_CONTINUOUS);
    * 
-   * @param esFlags The thread's execution requirements. This parameter can be one or more of the following values. Join them with single |
-   * @returns If the function succeeds, the return value is the previous thread execution state. If the function fails, the return value is NULL.
+   * @param esFlags The thread's execution requirements.
+   * This parameter can be one or more of the following values. Join them with single |
+   * @returns If the function succeeds, the return value is the previous thread execution state.
+   * If the function fails, the return value is NULL.
    * @see[Docs]{@link https://docs.microsoft.com/en-us/windows/desktop/api/winbase/nf-winbase-setthreadexecutionstate}
    */
   SetThreadExecutionState(esFlags: M.EXECUTION_STATE): number | null;
